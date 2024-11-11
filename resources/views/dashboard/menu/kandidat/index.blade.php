@@ -1,5 +1,5 @@
 @extends('dashboard.template.main')
-@section('title', 'Home')
+@section('title', 'Data Kandidat')
 
 
 @section('content')
@@ -30,12 +30,12 @@
             <td> <img src="{{ asset('storage/'.$item->image) }}" alt="<?= $item['nama_kandidat'] ?>" srcset="" width="200" height="200">   </td>
             <td> {{ $item['organisasi']}}  </td>
             <td>
-                {{ asset('storage/'.$item->image) }}
-            <a href="/admin/kandidat/edit/{{$item["id"]}}" class="btn btn-warning">Edit</a>
+               
+            <a href="/admin/kandidat/{{$item["id"]}}/edit" class="btn btn-warning">Edit</a>
             <form action="/admin/kandidat/{{ $item["id"] }}" class="d-inline" method="post">
                 @method('delete')
                 @csrf
-                <button class="badge bg-danger border-0" onclick="return confirm('yakin hapus data?')"> 
+                <button class="btn btn-danger" onclick="return confirm('yakin hapus data?')"> 
                     
                    Hapus
                     

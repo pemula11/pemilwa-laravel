@@ -15,8 +15,11 @@
       
             <div class="clearfix p-2">
                 <div class="float-start border-3 border-secondary border-bottom p-2"><b>Selamat Datang, {{$user->name}} </b></div>
-    
+                <div class="float-end p-2">
+                    <a href="/logout" class="btn btn-danger">Logout</a>
+                </div>
             </div>
+
 
         <!-- start Containe -->
         
@@ -71,7 +74,7 @@
 ?>
               @endif
                 
-                    {{$status}}
+                   
             </div>
          <!-- End Containe -->
        </div>

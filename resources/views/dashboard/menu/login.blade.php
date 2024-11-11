@@ -1,19 +1,5 @@
 @include('user.template.header')
 
-@if(session()->has('success'))
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>{{ session('success') }}</strong> 
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-@endif
-
-@if(session()->has('logineror'))
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <strong>{{ session('logineror') }}</strong> 
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-@endif
-
 <?php
 //menghubungkan koneksi database
  
@@ -152,9 +138,9 @@ body {
 </div>
   <h2>Login</h2>
 
-    <form action="/login" method="post" class="login-form">
+    <form action="/admin/login" method="post" class="login-form">
       @csrf
-      <input type="text" name="nim" placeholder="NIM" required/>
+      <input type="text" name="username" placeholder="username" required/>
       <input type="password" name="password" placeholder="password" required/>
       <input type="submit" class="submit" value="login" name="login">
       

@@ -7,6 +7,7 @@ use App\Models\Pilihan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserDashboardController extends Controller
 {
@@ -38,7 +39,8 @@ class UserDashboardController extends Controller
     {
         
         # code...
-        $kandidat = Kandidat::firstWhere('id', $id)->get();
+        $kandidat = Kandidat::find($id);
+     
         return view('user.profil', [
             'data' => $kandidat,
 
@@ -52,12 +54,33 @@ class UserDashboardController extends Controller
             'nim' => 'required',
             'password' => 'required',
         ]);
-        if (Auth::attempt($credential)) {
+        if (User::where('nim', $credential['nim'])->doesntExist()) {
+            # code...
+            Alert::error('Error', 'username/password salah');
+            return back();
+        }
+
+        
+       
+        if (Auth::attempt(['nim' => $credential['nim'], 'password' => $credential['password']])) {
             # code...
             $request->session()->regenerate();
+            if (Auth::user()->status == 0) {
+                # code...
+                Auth::logout();
+                Alert::error('Error', 'Akun belum diaktivasi');
+                return back();
+            }
             return redirect()->intended('/dashboard');
         }
-        return back()->with('logineror', 'login Failed!');
+        Alert::error('Error', 'username/password salah');
+        return back();
+    }
+
+    public function register()
+    {
+        # code...
+        return view('user.register');
     }
 
     public function logout(Request $request){
@@ -80,6 +103,25 @@ class UserDashboardController extends Controller
         'id_user' => $id_user,
        ]);
        return redirect('/dashboard')->with('vote', 'telah vote!');
+    }
+
+    public function storeRegister(){
+        $credential = request()->validate([
+            'name' => 'required',
+            'nim' => 'required',
+            'password' => 'required',
+        ]);
+    
+        if (User::where('nim', $credential['nim'])->exists()) {
+            # code...
+            Alert::error('Error', 'Nim sudah terdaftar');
+            return back();
+        }
+        $credential['status'] = 0;
+
+        $credential['password'] = bcrypt($credential['password']);
+        User::create($credential);
+        return redirect('/login');
     }
     
     public function pil()

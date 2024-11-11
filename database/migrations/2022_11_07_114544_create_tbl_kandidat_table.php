@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('nama', 100)->required();
             $table->string('image', 100);
-            $table->text('visi')->nullable()->default('text');
-            $table->text('misi')->nullable()->default('text');
-            $table->text('motto')->nullable()->default('text');
+            $table->text('visi')->nullable();
+            $table->text('misi')->nullable();
+            $table->text('motto')->nullable();
             $table->enum('organisasi', ['TIDAK ADA','HMJ', 'DEMA', 'SEMA'])->nullable()->default('TIDAK ADA');
             $table->timestamps();
         });

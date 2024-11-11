@@ -56,7 +56,9 @@
   font-size: 14px;
 }
 
+
 .form input:required:invalid { background-color: #ffdddd; }
+
 .form .submit {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
@@ -71,11 +73,10 @@
   transition: all 0.3 ease;
   cursor: pointer;
 }
+
 .form .submit:hover,.form .submit:active,.form .submit:focus {
   background: #43A047;
 }
-
-
 .form .message {
   margin: 15px 0 0;
   color: #b3b3b3;
@@ -136,7 +137,7 @@ body {
 <section class="text-center">
   <!-- membuat rata tengah  -->
  
-      
+     
 
 
 <div class="login-page">
@@ -150,13 +151,14 @@ body {
         <img src="../image/static/logo_uin.png" class="img-fluid p-3" style="width: 120px" alt="" srcset="">
         
 </div>
-  <h2>Login</h2>
+  <h2>Register</h2>
 
-    <form action="/login" method="post" class="login-form">
+    <form action="/register" method="post" class="login-form">
       @csrf
+      <input type="text" name="name" placeholder="Nama" required/>
       <input type="text" name="nim" placeholder="NIM" required/>
-      <input type="password" name="password" placeholder="password" required/>
-      <input type="submit" class="submit" value="login" name="login">
+      <input type="password" name="password" placeholder="Password" required/>
+      <input type="submit" class="submit" value="register" name="register">
       
     </form>
   </div>

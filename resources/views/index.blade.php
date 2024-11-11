@@ -49,6 +49,7 @@ html, body, .container, .row {
         <div class=" p-5 center">
         
              <a class="btn btn-primary btn-lg " href="login"> Masuk </a> 
+             <a class="btn btn-primary btn-lg " href="register"> Daftar </a>
             
         </div>
 

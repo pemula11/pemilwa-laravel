@@ -1,20 +1,21 @@
 @extends('dashboard.template.main')
-@section('title', 'Home')
+@section('title', 'edit user')
 
 
 @section('content')
     
    
-<div class="container bg-white">
+<div class="container m-3 bg-white">
     @foreach ($errors->all() as $err)
     {{$err}}
 @endforeach
-  <form action="/admin/user" method="post" class="row  needs-validation" novalidate>
+  <form action="/admin/user/{{$user->id}}" method="post" class="row  needs-validation" novalidate>
+    @method('put')
     @csrf
     <div class="col col-md-8">
     <div class="">
       <label for="validationCustom01" class="form-label">NIM</label>
-      <input type="Number" class="form-control" name="nim" id="validationCustom01" value="" required>
+      <input type="Number" class="form-control" name="nim" id="validationCustom01" value="{{$user->nim}}" disabled required>
       <div class="valid-feedback">
         Looks good!
       </div>
@@ -24,7 +25,7 @@
     <div class="col col-md-8">
     <div class="">
       <label for="validationCustom01" class="form-label">Nama</label>
-      <input type="text" class="form-control" name="name" id="validationCustom01"  required>
+      <input type="text" class="form-control" name="name" id="validationCustom01" value="{{$user->name}}"  required>
       <div class="valid-feedback">
         Looks good!
       </div>
@@ -34,7 +35,7 @@
     <div class="col col-md-8">
     <div class="">
       <label for="validationCustom01" class="form-label">Password</label>
-      <input type="password" class="form-control" name="password" id="validationCustom01" value="" required>
+      <input type="password" class="form-control" name="password" placeholder="just empty if not any changed" >
       <div class="valid-feedback">
         Looks good!
       </div>
@@ -43,7 +44,7 @@
   
     
     <div class="col-12">
-      <button class="btn btn-primary mt-3" name="submit" value="submit" type="submit">Tambah Data</button>
+      <button class="btn btn-primary mt-3" name="submit" value="submit" type="submit">Edit Data</button>
     </div>
   </form>
   </div>
@@ -71,7 +72,7 @@
         }, false)
       })
   })()
-  </script> ssss
+  </script> 
     
 
 @endsection

@@ -1,5 +1,5 @@
 @extends('dashboard.template.main')
-@section('title', 'Home')
+@section('title', 'Data User')
 
 
 @section('content')
@@ -34,8 +34,24 @@
                 aktif
             @endif </td>
             <td>
-            <a href="admin/user/id/{{$item["id"]}}" class="btn btn-danger" onclick="return confirm('yang bener?')">Hapus</a>
-            <a href="admin/user/id/{{$item["id"]}}" class="btn btn-warning">Edit</a>
+          
+            <a href="/admin/user/{{$item["id"]}}/edit" class="btn btn-warning">Edit</a>
+
+            <form action="/admin/user/{{$item["id"]}}" class="d-inline" method="post">
+                @method('delete')
+                @csrf
+                <button class="btn btn-danger" onclick="return confirm('yakin hapus data?')"> 
+                    
+                    Hapus
+                    
+                </button>
+            </form>
+
+            @if ($item['status']=="0")
+               
+            <a href="/admin/user/{{$item["id"]}}/aktivasi" class="btn btn-primary" >aktivasi</a>
+               
+             @endif  
         
             </td>
         </tr>

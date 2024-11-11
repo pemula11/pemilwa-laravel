@@ -26,9 +26,15 @@ html, body, .container, .row {
 	<title> Pemilwa - Menu Utama</title>
 
 	<!-- Bootstrap CSS -->
+	
 	<link rel="stylesheet" href="{{url('css/bootstrap.css')}}" />
 	<link rel="stylesheet" href="{{url('css/bootstrap.bundle.css')}}" />
+	
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	
 </head>
 
 <body class="bg">
 
+	
+  @include('sweetalert::alert')
