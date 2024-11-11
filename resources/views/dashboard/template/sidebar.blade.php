@@ -27,7 +27,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item ">
-            <a href="?menu=dashboard" class="nav-link <?php if($menu=="dashboard"){ echo "active"; } ?>">
+            <a href="/admin/dashboard" class="nav-link <?php if($menu=="dashboard"){ echo "active"; } ?>">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard

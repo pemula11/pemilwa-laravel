@@ -21,7 +21,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="logout.php"> Logout</a>
+        <a class="nav-link" href="/admin/logout"> Logout</a>
       </li>
     </ul>
    </nav>

@@ -1,6 +1,6 @@
 # Pemilwa Laravel
 
-This is a Laravel project for Pemilwa.
+This is a Laravel project for E-Voting.
 
 ## Requirements
 

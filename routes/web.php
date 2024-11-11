@@ -5,6 +5,7 @@ use App\Http\Controllers\KandidatController;
 use App\Http\Controllers\PilihanController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserDashboardController;
+use App\Models\Admin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,14 +50,12 @@ Route::prefix('admin')->group(function () {
         return view('dashboard.menu.login');
     })->name('admin.login');
     Route::post('/login', [AdminController::class, 'adminLogin']);
-    Route::get('/logout', [UserDashboardController::class, 'adminLogout']);
+    Route::get('/logout', [AdminController::class, 'adminLogout']);
     Route::middleware('admin')->group((function (){
-        Route::get('/dashboard', function () {
-            return view('dashboard.menu.index');
-        });
+        Route::get('/dashboard', [AdminController::class, 'index']);
         Route::get('/laporan', [PilihanController::class, 'index']);
         Route::resource('/kandidat', KandidatController::class);
-        Route::resource('/user', AdminController::class);
-        Route::get('/user/{id}/aktivasi', [AdminController::class, 'aktivasi']);
+        Route::resource('/user', UserController::class);
+        Route::get('/user/{id}/aktivasi', [UserController::class, 'aktivasi']);
     }));
 });
